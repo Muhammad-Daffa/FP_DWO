@@ -1,0 +1,76 @@
+<?xml version="1.0"?>
+<Schema name="dwadventureworks">
+<!--
+  == This software is subject to the terms of the Eclipse Public License v1.0
+  == Agreement, available at the following URL:
+  == http://www.eclipse.org/legal/epl-v10.html.
+  == You must accept the terms of that agreement to use this software.
+  ==
+  == Copyright (C) 2000-2005 Julian Hyde
+  == Copyright (C) 2005-2011 Pentaho and others
+  == All Rights Reserved.
+  -->
+
+<!-- Shared dimensions -->
+
+  
+<Cube name="pengiriman" defaultMeasure="Total">
+  <!-- Use annotations to provide translations of this cube's caption and
+       description into German and French. Use of annotations in this manner is
+       experimental and unsupported; just for testing right now. -->
+  
+  <Table name="fact_shipment"/>
+ 
+  <Dimension name="Time" foreignKey="time_id">
+    <Hierarchy hasAll="true" allMemberName="All Times" primaryKey="time_id">
+      <Table name="timedimens" />
+      <Level name="Year" column="year" type="Numeric" uniqueMembers="true"
+          levelType="TimeYears"/>
+      <Level name="Month" column="month" uniqueMembers="false" type="Numeric"
+          levelType="TimeMonths"/>
+      <Level name="Date" column="day" uniqueMembers="false" type="Numeric"
+          levelType="TimeDays"/>
+    </Hierarchy>
+   
+  </Dimension>
+
+  <Dimension name="Ship Method" foreignKey = "shipmethod_id">
+    <Hierarchy hasAll="true" allMemberName="All Ship Method" primaryKey ="shipmethod_id">
+      <Table name="shipment" />
+      <Level name="Ship Name" column="ship_name" />
+    </Hierarchy>
+  </Dimension>
+
+  <Dimension name="Customer" foreignKey="customer_id">
+    <Hierarchy  hasAll="true" allMemberName="All Customers" primaryKey  = "customer_id">
+        <Table name="customer"/>
+        <Level name="Name" column="customer_name"/>
+    </Hierarchy>
+  </Dimension>
+    
+  <Dimension name="Ship To" foreignKey = "address_id">
+    <Hierarchy hasAll="true" allMemberName="All State Province" primaryKey ="address_id">
+      <Table name="address" />
+      <Level name="State Province" column="state_province" />
+      <Level name="City" column="city"/>
+      <Level name="Address" column="address_name" />
+    </Hierarchy>
+  </Dimension>
+
+  <Measure name="Total Due" column="total_due" aggregator="sum"
+      formatString="Standard"/>
+  <Measure name="Total Freight" column="freight" aggregator="sum"
+      formatString="Standard"/>
+  
+ <!--  <Measure name="Sales Count" column="film_id" aggregator="count"
+      formatString="#,###"/>
+  <Measure name="Customer Count" column="customer_id"
+      aggregator="distinct-count" formatString="#,###"/> -->
+  
+  
+  
+</Cube>
+
+
+
+</Schema>
