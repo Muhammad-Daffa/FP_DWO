@@ -5,7 +5,7 @@ Nama & NPM Ketua:
 
 Nama & NPM Anggota:
 - Anisa Rahma S. (19082010051)
-- Mariska Regina R. (19082010069)
+- Mariska Regina (19082010069)
 - Fanni Silvana (19082010091)
 - Muhammad Kandias H.M. (19082010100)
 
