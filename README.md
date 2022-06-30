@@ -1,7 +1,8 @@
 Final Project DWO Kelompok 15
 
 Nama & NPM Ketua:
-Muhammad Daffa (19082010031)
+- Muhammad Daffa (19082010031)
+
 Nama & NPM Anggota:
 - Anisa Rahma S. (19082010051)
 - Mariska Regina R. (19082010069)
